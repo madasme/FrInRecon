@@ -26,6 +26,10 @@ In your terminal, add the FrInRecon repository to your ```PYTHONPATH``` variable
 ```
 $ export PYTHONPATH=~/FrInRecon:${PYTHONPATH}
 ```
+#### Import the module in your code
+```
+from FPrecon import *
+```
 
 #### Input files
 1. Fragments fingerprints
