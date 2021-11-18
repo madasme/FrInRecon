@@ -9,6 +9,9 @@ The FrInRecon code works with the idea to take a compound for which no structura
 #### Dependencies
 * Rdkit (version)
 * OpenBabel (version >= 3.0.0) 
+* NumPy (version )
+* Pickle (version )
+* Pandas (version)
 
 OpenBabel: Many users encounter trouble setting up OpenBabel with Python bindings correctly. We therefore provide some [installation help for OpenBabel](#ob) below.
 
@@ -31,7 +34,9 @@ $ export PYTHONPATH=~/FrInRecon:${PYTHONPATH}
 #### Required settings
 1. The canonical smiles of the compound to reconstruct
 2. The Uniprot/Unirep ID of the target 
-3. 
+3. The reconstruction type to be used (e.g. union, frequency, or binary frequency)
+4. Threshold of fragments binding mode conservation (i.e. how corserved has to be the binding mode in terms of mTIS)
+5. Threshold of ligand proportion (i.e. proprtion of ligand fragments to be found in dataset)
 
 ### Test case
 As a proof of concept we have tested the FrinRecon code by conducting:
