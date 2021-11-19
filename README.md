@@ -43,11 +43,17 @@ from FPrecon import *
 5. Threshold of ligand proportion (i.e. proprtion of ligand fragments to be found in dataset)
 
 ### Test case
-As a proof of concept we have tested the FrinRecon code by conducting:
-1. A fragmentation process supported by PDBParser service from PharmAI GmbH and the RdKit implementations of RECAP and BRICS fragmentation algorithms. (Check pseudocode)
-2. The non-covalent interactions detection by PLIP tool in plipxml format. ([Check PLIP](https://plip-tool.biotec.tu-dresden.de/plip-web/plip/index))
-3. The PLIP fingerprinting and isomorphism method provided by PharmAI GmbH services. ([Check their Website](https://www.pharm.ai/))
-4. Conservation Analysis of fragments binding mode using PLIP fingerprints. (Check pseudocode)
+As a proof of concept we have tested the FrinRecon code by conducting a fragmentation of PDB compounds and a simple conservation analysis of the PDB fragments' binding mode.
+#### Fragmentation analysis
+The fragmentation process considered the following steps:
+1. A fragmentation process supported by PDBParser service from [PharmAI GmbH](https://www.pharm.ai/), the [RdKit implementation of RECAP algorithm](https://www.rdkit.org/docs/source/rdkit.Chem.Recap.html), and the [RdKit implementation of BRICS algorithm](https://www.rdkit.org/docs/source/rdkit.Chem.BRICS.html).
+2. The non-covalent interactions detection by [PLIP tool](https://plip-tool.biotec.tu-dresden.de/plip-web/plip/index) in plipxml format. 
+3. The PLIP fingerprinting and isomorphism method provided by [PharmAI GmbH](https://www.pharm.ai/) services.   
+
+For more details about the process you can check [here](https://github.com/madasme/FrInRecon/blob/main/fragmentation.pdf).
+
+#### Conservation analysis
+Taking the fragmentation results, we conducted a simple conservation analysis checking how conserved is the binding mode of each fragment when binding to the given target. For such procedure, we considered unique combination of fragment inchikeys and target Uniprot IDs (in the format inchikey~Uniprot), with enough structural data, considering at least 5 different compounds. The conservation scores was measured in mTIS (mean Tanimoto Similarity) of the fingerprint set's pairwise comparison. For more details please check [here]().
 
 **Test case code example**
 ```
