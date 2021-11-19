@@ -1,17 +1,21 @@
-from FPrepre import *
+from FPrecon import *
 
 ####### INPUTS #######
+report = read_pickle("frin-report_v9.pickle")
+confrag_file = "frag_target_conser_stats.csv"
+
+####### SETTINGS #######
 smile = "O=c1[nH]c(=O)n(C2CC(O)C(CO)O2)cc1C=CBr" #Smiles of the ligand
 unirep = "Q9XZT6" #Uniprot representative of the target
-report = read_pickle("frin-report_v9.pickle") #Reads the full report to extract the fragments fingerprints
-confrag = conserved_fragments("frag_target_conser_stats.csv", 0)
-proportion = 0
+recontype = "union" #it can be union, freq or freqbin
+confrag_thres = 0.2
+proportion = 0.2
 
 ####### EXECUTION ########
-recontype = "union" #could be union, freq or freqbin
+confrag = conserved_fragments(confrag_file, confrag_thres)
 recon = Reconstructor(smile, unirep, report, recontype, confrag, proportion)
 
-####### PRINTING RESULTS ########
+####### SHOWING RESULTS ########
 print('Ligand smiles:',recon.smile)
 print('Ligand inchikey:',recon.inchi)
 print('Fragments smiles:',recon.fragsmiles)
