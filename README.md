@@ -48,7 +48,7 @@ As a proof of concept we have tested the FrinRecon code by conducting a fragment
 #### Fragmentation analysis
 
 
-The fragmentation process considered the following steps:
+The fragmentation pipeline considered the following steps:
 1. A fragmentation process supported by PDBParser service from [PharmAI GmbH](https://www.pharm.ai/), the [RdKit implementation of RECAP algorithm](https://www.rdkit.org/docs/source/rdkit.Chem.Recap.html), and the [RdKit implementation of BRICS algorithm](https://www.rdkit.org/docs/source/rdkit.Chem.BRICS.html).
 2. The non-covalent interactions detection by [PLIP tool](https://plip-tool.biotec.tu-dresden.de/plip-web/plip/index) in plipxml format. 
 3. The PLIP fingerprinting and isomorphism method provided by [PharmAI GmbH](https://www.pharm.ai/) services.   
@@ -57,7 +57,7 @@ For more details about the process you can check [here](https://github.com/madas
 *Please download the fragmentation file [(frin-report_v9.pickle)](https://sharing.crt-dresden.de/index.php/s/weEr9nAnScvJJMM/download) to be used in the test case.*
 
 #### Conservation analysis
-Taking the fragmentation results, we conducted a simple conservation analysis checking how conserved is the binding mode of each fragment when binding to the given target. For such procedure, we considered unique combination of fragment inchikeys and target Uniprot IDs (in the format inchikey~Uniprot), with enough structural data, considering at least 5 different compounds. The conservation scores was measured in mTIS (mean Tanimoto Similarity) of the fingerprint set's pairwise comparison. For more details please check [here]().
+Taking the fragmentation results, we conducted a simple conservation analysis checking how conserved is the binding mode of each fragment when binding to the given target. For such procedure, we considered unique combination of fragment inchikeys and target Uniprot IDs (in the format inchikey~Uniprot), with enough structural data, considering at least 5 different compounds. The conservation score was measured in mTIS (mean Tanimoto Similarity) of the fingerprint set's pairwise comparison. For more details please check [here]().
 
 *Please download the conservation file [(frag_target_conser_stats.csv)](https://sharing.crt-dresden.de/index.php/s/lG6v03nVYqR9lxL/download) to be used in the test case.* 
 
