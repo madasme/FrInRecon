@@ -7,13 +7,13 @@ The FrInRecon code works with the idea to take a compound for which no structura
 
 ## Usage 
 #### Dependencies
-* Rdkit (version)
+* Rdkit (version >= 2018.09.1)
 * OpenBabel (version >= 3.0.0) 
-* NumPy (version )
-* Pickle (version )
-* Pandas (version)
+* NumPy (version >= 1.19.1)
+* Pickle (version >= 4.0)
+* Pandas (version >= 1.1.5)
 
-OpenBabel: Many users encounter trouble setting up OpenBabel with Python bindings correctly. We therefore provide some [installation help for OpenBabel](#ob) below.
+OpenBabel: Some users encounter trouble setting up OpenBabel with Python bindings correctly. Zou can find some [installation help for OpenBabel](#ob) below.
 
 #### Clone the repository  
 Open a terminal and clone this repository using
@@ -42,20 +42,26 @@ from FPrecon import *
 4. Threshold of fragments binding mode conservation (i.e. how corserved has to be the binding mode in terms of mTIS)
 5. Threshold of ligand proportion (i.e. proprtion of ligand fragments to be found in dataset)
 
-### Test case
-As a proof of concept we have tested the FrinRecon code by conducting a fragmentation of PDB compounds and a simple conservation analysis of the PDB fragments' binding mode.
+## Test case
+As a proof of concept we have tested the FrinRecon code by conducting a fragmentation of PDB compounds and a simple conservation analysis of the PDB fragments' binding mode.  
+
 #### Fragmentation analysis
+
+
 The fragmentation process considered the following steps:
 1. A fragmentation process supported by PDBParser service from [PharmAI GmbH](https://www.pharm.ai/), the [RdKit implementation of RECAP algorithm](https://www.rdkit.org/docs/source/rdkit.Chem.Recap.html), and the [RdKit implementation of BRICS algorithm](https://www.rdkit.org/docs/source/rdkit.Chem.BRICS.html).
 2. The non-covalent interactions detection by [PLIP tool](https://plip-tool.biotec.tu-dresden.de/plip-web/plip/index) in plipxml format. 
 3. The PLIP fingerprinting and isomorphism method provided by [PharmAI GmbH](https://www.pharm.ai/) services.   
-
 For more details about the process you can check [here](https://github.com/madasme/FrInRecon/blob/main/fragmentation.pdf).
+
+**Please download the [fragmentation file](https://sharing.crt-dresden.de/index.php/s/weEr9nAnScvJJMM/download) to be used in the test case.**  
 
 #### Conservation analysis
 Taking the fragmentation results, we conducted a simple conservation analysis checking how conserved is the binding mode of each fragment when binding to the given target. For such procedure, we considered unique combination of fragment inchikeys and target Uniprot IDs (in the format inchikey~Uniprot), with enough structural data, considering at least 5 different compounds. The conservation scores was measured in mTIS (mean Tanimoto Similarity) of the fingerprint set's pairwise comparison. For more details please check [here]().
 
-**Test case code example**
+**Please download the [conservation file](https://github.com/madasme/FrInRecon/raw/main/frag_target_conser_stats.csv/download) to be used in the test case.**  
+
+#### Test case code example
 ```
 from FPrecon import *
 
@@ -91,7 +97,7 @@ $ python3 testcase.py
 ***The FrInRecon code can be used with any other fragmentation approach and any other fingerprint descriptor that can be transferred from a fragment to a compound level. Nonetheless, keep in mind that the input files format should be maintained.***
 
 
-### Installing Open Babel <a name="ob"></a>
+## Installing Open Babel <a name="ob"></a>
 As many users encounter problems with installing the required OpenBabel tools, we want to provide some help here. However, we cannot offer technical support. Comprehensive information about the installation of OpenBabel for Windows, Linux, and macOS can be found in the [OpenBabel wiki](http://openbabel.org/wiki/Category:Installation) and the [OpenBabel Docs](https://open-babel.readthedocs.io/en/latest/Installation/install.html). Information about the installation of [OpenBabel Python bindings](https://open-babel.readthedocs.io/en/latest/UseTheLibrary/PythonInstall.html) can also be found there.
 
 
