@@ -54,12 +54,12 @@ The fragmentation process considered the following steps:
 3. The PLIP fingerprinting and isomorphism method provided by [PharmAI GmbH](https://www.pharm.ai/) services.   
 For more details about the process you can check [here](https://github.com/madasme/FrInRecon/blob/main/fragmentation.pdf).
 
-**Please download the [fragmentation file](https://sharing.crt-dresden.de/index.php/s/weEr9nAnScvJJMM/download) to be used in the test case.**  
+*Please download the [fragmentation file](https://sharing.crt-dresden.de/index.php/s/weEr9nAnScvJJMM/download) to be used in the test case.*
 
 #### Conservation analysis
 Taking the fragmentation results, we conducted a simple conservation analysis checking how conserved is the binding mode of each fragment when binding to the given target. For such procedure, we considered unique combination of fragment inchikeys and target Uniprot IDs (in the format inchikey~Uniprot), with enough structural data, considering at least 5 different compounds. The conservation scores was measured in mTIS (mean Tanimoto Similarity) of the fingerprint set's pairwise comparison. For more details please check [here]().
 
-**Please download the [conservation file](https://github.com/madasme/FrInRecon/raw/main/frag_target_conser_stats.csv) to be used in the test case.**  
+*Please download the [conservation file](https://github.com/madasme/FrInRecon/raw/main/frag_target_conser_stats.csv) to be used in the test case.* 
 
 #### Test case code example
 ```
