@@ -13,7 +13,7 @@ The FrInRecon code works with the idea to take a compound for which no structura
 * Pickle (version >= 4.0)
 * Pandas (version >= 1.1.5)
 
-OpenBabel: Some users encounter trouble setting up OpenBabel with Python bindings correctly. Zou can find some [installation help for OpenBabel](#ob) below.
+OpenBabel: Some users encounter trouble setting up OpenBabel with Python bindings correctly. You can find some [installation help for OpenBabel](#ob) below.
 
 #### Clone the repository  
 Open a terminal and clone this repository using
@@ -50,12 +50,12 @@ The fragmentation pipeline considered the following steps:
 1. A fragmentation process supported by PDBParser service from [PharmAI GmbH](https://www.pharm.ai/), the [RdKit implementation of RECAP algorithm](https://www.rdkit.org/docs/source/rdkit.Chem.Recap.html), and the [RdKit implementation of BRICS algorithm](https://www.rdkit.org/docs/source/rdkit.Chem.BRICS.html).
 2. The non-covalent interactions detection by [PLIP tool](https://plip-tool.biotec.tu-dresden.de/plip-web/plip/index) in plipxml format. 
 3. The PLIP fingerprinting and isomorphism method provided by [PharmAI GmbH](https://www.pharm.ai/) services.   
-For more details about the process you can check [here](https://github.com/madasme/FrInRecon/blob/main/fragmentation.pdf).
+For more details about the process you can check [here](https://github.com/madasme/FrInRecon/blob/main/InputPrep/fragmentation.pdf).
 
 *Please download the fragmentation file [(frin-report_v9.pickle)](https://sharing.crt-dresden.de/index.php/s/weEr9nAnScvJJMM/download) to be used in the test case.*
 
 #### Conservation analysis
-Taking the fragmentation results, we conducted a simple conservation analysis checking how conserved is the binding mode of each fragment when binding to the given target. For such procedure, we considered unique combination of fragment inchikeys and target Uniprot IDs (in the format inchikey~Uniprot), with enough structural data, considering at least 5 different compounds. The conservation score was measured in mTIS (mean Tanimoto Similarity) of the fingerprint set's pairwise comparison. For more details please check [here](https://github.com/madasme/FrInRecon/blob/main/conservation.pdf).
+Taking the fragmentation results, we conducted a simple conservation analysis checking how conserved is the binding mode of each fragment when binding to the given target. For such procedure, we considered unique combination of fragment inchikeys and target Uniprot IDs (in the format inchikey~Uniprot), with enough structural data, considering at least 5 different compounds. The conservation score was measured in mTIS (mean Tanimoto Similarity) of the fingerprint set's pairwise comparison. For more details please check [here](https://github.com/madasme/FrInRecon/blob/main/InputPrep/conservation.pdf).
 
 *Please download the conservation file [(frag_target_conser_stats.csv)](https://sharing.crt-dresden.de/index.php/s/lG6v03nVYqR9lxL/download) to be used in the test case.* 
 
@@ -63,16 +63,20 @@ Taking the fragmentation results, we conducted a simple conservation analysis ch
 ```
 from FPrecon import *
 
+# You will need the inpout files to execute the test case. You can dowload them here:
+# Fragmentation file -> https://sharing.crt-dresden.de/index.php/s/weEr9nAnScvJJMM/download
+# Conservation file -> https://sharing.crt-dresden.de/index.php/s/lG6v03nVYqR9lxL/download
+
 ####### INPUTS #######
-report = read_pickle("frin-report_v9.pickle")
-confrag_file = "frag_target_conser_stats.csv"
+report = read_pickle("frin-report_v9.pickle") #Fragmentation file (specify the right path to file)
+confrag_file = "frag_target_conser_stats.csv" #Conservation file (specify the right path to file)
 
 ####### SETTINGS #######
-smile = "O=c1[nH]c(=O)n(C2CC(O)C(CO)O2)cc1C=CBr" #Smiles of the ligand
-unirep = "Q9XZT6" #Uniprot representative of the target
-recontype = "union" #it can be union, freq or freqbin
-confrag_thres = 0.2
-proportion = 0.2
+smile = "O=c1[nH]c(=O)n(C2CC(O)C(CO)O2)cc1C=CBr" #Smiles of the ligand to reconstruct
+unirep = "Q9XZT6" #Uniprot representative of the target to reconstruct
+recontype = "union" #Reconstruction type. It can be union, freq or freqbin
+confrag_thres = 0.2 # Threshold for the fragments conservation
+proportion = 0.2 #threshold for the ligand proportion
 
 ####### EXECUTION ########
 confrag = conserved_fragments(confrag_file, confrag_thres)
