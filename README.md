@@ -63,7 +63,7 @@ Taking the fragmentation results, we conducted a simple conservation analysis ch
 ```
 from FPrecon import *
 
-# You will need the inpout files to execute the test case. You can dowload them here:
+# You will need the input files to execute the test case. You can dowload them here:
 # Fragmentation file -> https://sharing.crt-dresden.de/index.php/s/weEr9nAnScvJJMM/download
 # Conservation file -> https://sharing.crt-dresden.de/index.php/s/lG6v03nVYqR9lxL/download
 
