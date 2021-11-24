@@ -13,7 +13,7 @@ The FrInRecon code works with the idea to take a compound for which no structura
 * Pickle (version >= 4.0)
 * Pandas (version >= 1.1.5)
 
-OpenBabel: Some users encounter trouble setting up OpenBabel with Python bindings correctly. Zou can find some [installation help for OpenBabel](#ob) below.
+OpenBabel: Some users encounter trouble setting up OpenBabel with Python bindings correctly. You can find some [installation help for OpenBabel](#ob) below.
 
 #### Clone the repository  
 Open a terminal and clone this repository using
